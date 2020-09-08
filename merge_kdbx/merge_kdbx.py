@@ -6,6 +6,8 @@ import merge_kdbx.kdbx_xml_util
 import datetime
 from copy import deepcopy
 
+DATETIME_FORMAT = "%Y-%m-%dT%H-%M-%SZ"
+
 def main():
     try:
         args = merge_kdbx.clparser.parse()
@@ -23,7 +25,7 @@ def main():
         for group in target_xml_root.findall('Group'):
             for entry in group.findall('Entry'):
                     group_name = group.find('Name').text
-                    entry_last_mod = datetime.datetime.strptime(entry.find('Times').find('LastModificationTime').text, "%Y-%m-%dT%H-%M-%SZ")
+                    entry_last_mod = datetime.datetime.strptime(entry.find('Times').find('LastModificationTime').text, DATETIME_FORMAT)
                     attr = {'Password': '', 'Title': ''}
                     for s in entry.findall('String'):
                         for k in attr.keys():
@@ -33,16 +35,17 @@ def main():
                     # Check `dst` if it has the group of `group_name` and same entry including attr['Title'].
                     dst_group = merge_kdbx.kdbx_xml_util.find_group(dst.find('Root'), group_name)
                     if dst_group == None:
-                        # TODO: add group
-                        pass
+                        dst.find('Root').append(group)
+
+                    dst_entry = merge_kdbx.kdbx_xml_util.find_entry_by_title(dst_group, attr['Title'])
+                    if dst_entry == None:
+                        dst.find('Root').find(group_name).append(entry)
                     else:
-                        dst_entry = merge_kdbx.kdbx_xml_util.find_entry_by_title(dst_group, attr['Title'])
-                        if dst_entry == None:
-                            # TODO: add entry
-                            pass
-                        else:
-                            # TODO: compare last modification time and modifiy by newer one
-                            pass
+                        src_last_mod = entry_last_mod
+                        dst_last_mod = datetime.datetime.strptime(dst_entry.find('Times').find('LastModificationTime').text, DATETIME_FORMAT)
+                        if src_last_mod > dst_last_mod:
+                            # I believe `dst_entry` is a reference and modification here affects to the entry in `dst_tree` :X.
+                            dst_entry = deepcopy(entry)
     
     dst_tree.write(args.dst)
 
