@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Python: モジュール",
+            "type": "python",
+            "request": "launch",
+            "module": "merge_kdbx.merge_kdbx"
+        }
+    ]
+}
