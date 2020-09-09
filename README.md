@@ -3,7 +3,10 @@
 This program merges multiple keepass 2.x databases exported in XML. The merged XML includes exclusive entries and last modified ones if two or more sources have an entry with the same title.
 
 # Install
-TODO. easy_install will be supported.
+
+```
+pip install merge-kdbx
+```
 
 # Usage
 
