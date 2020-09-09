@@ -20,5 +20,5 @@ optional arguments:
                         permit overwriting source file by dst.
 ```
 
-Then you can import the generated XML into new and empty kdbx database. Existing entries should be removed before import as shown in below figure.
+Then you can import the generated XML into new and empty kdbx database. Existing entries should be removed before import as shown in the below figure.
 ![Empty kdbx database](https://raw.githubusercontent.com/RollMan/merge_kdbx/master/docs/_media/empty_kdbx.png "Empty database is recommended to import the generated XML.")
