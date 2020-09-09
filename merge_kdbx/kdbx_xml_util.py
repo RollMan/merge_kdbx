@@ -1,10 +1,10 @@
 import datetime
 from copy import deepcopy
 
-DATETIME_FORMAT = "%Y-%m-%dT%H-%M-%SZ"
+DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
 def find_group(root, group_name):
-    for group in root:
+    for group in root.findall('Group'):
         if group.find('Name').text == group_name:
             return group
     return None
@@ -28,7 +28,9 @@ def update_dst_entry(src_entry, dst_entry, dst_group):
         src_last_mod = get_entry_last_modification(src_entry)
         dst_last_mod = get_entry_last_modification(dst_entry)
         if src_last_mod > dst_last_mod:
-            dst_entry = deepcopy(src_entry)
+            # dst_entry = deepcopy(src_entry)
+            dst_group.remove(dst_entry)
+            dst_group.append(src_entry)
 
 def update_dst_group(src_group, dst_parent):
     dst_parent.append(src_group)

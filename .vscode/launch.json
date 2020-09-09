@@ -6,9 +6,9 @@
             "request": "launch",
             "module": "merge_kdbx.merge_kdbx",
             "args":[
-                "dst.xml",
-                "src1.xml",
-                "src2.xml"
+                "testcase/dst.xml",
+                "testcase/src2.xml",
+                "testcase/src1.xml"
             ]
         }
     ]
