@@ -10,7 +10,8 @@ def parse():
     parser.add_argument(
         '-f',
         '--force',
-        help='permit overwriting source file by dst.'
+        help='permit overwriting source file by dst.',
+        action="store_true"
     )
     parser.add_argument(
         'dst',
