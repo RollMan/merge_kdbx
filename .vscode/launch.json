@@ -1,10 +1,15 @@
 {
     "configurations": [
         {
-            "name": "Python: モジュール",
+            "name": "End to end test",
             "type": "python",
             "request": "launch",
-            "module": "merge_kdbx.merge_kdbx"
+            "module": "merge_kdbx.merge_kdbx",
+            "args":[
+                "dst.xml",
+                "src1.xml",
+                "src2.xml"
+            ]
         }
     ]
 }
