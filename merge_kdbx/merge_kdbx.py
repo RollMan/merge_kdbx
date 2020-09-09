@@ -15,7 +15,7 @@ def main():
         print(str(e))
         sys.exit(1)
     
-    src_xml_trees = [ET.parse(x) for x in args.src]
+    src_xml_trees = [ET.parse(x) for x in args.srcs]
     src_xml_roots = [x.getroot() for x in src_xml_trees]
     dst_tree = ET.parse(args.src[0])
     dst = dst_tree.getroot()

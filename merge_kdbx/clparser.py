@@ -26,7 +26,7 @@ def parse():
 
     args = parser.parse_args()
 
-    if not args.force and __check_overwriting_source(args.dst, args.src):
+    if not args.force and __check_overwriting_source(args.dst, args.srcs):
         raise ValueError("overwriting source file of {} is not permitted. remove the option of `-f`.".format(args.dst))
 
 
