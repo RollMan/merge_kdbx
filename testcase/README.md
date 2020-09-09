@@ -1,0 +1,1 @@
+All `.kdbx` files have the same password of `password`.
