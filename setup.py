@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="merge_kdbx",
-    version="0.0.2",
+    version="0.0.3",
     author="rollman054",
     author_email="qwpmb554@gmail.com",
     description="A mergetool for Keepass 2.x databases",

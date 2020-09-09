@@ -11,16 +11,15 @@ pip install merge-kdbx
 # Usage
 
 ```
-usage: merge_kdbx.py [-h] [-f FORCE] dst srcs [srcs ...]
+usage: merge_kdbx.py [-h] [-f] dst srcs [srcs ...]
 
 positional arguments:
-  dst                   path to destination xml files.
-  srcs                  paths to source xml file to be merged.
+  dst          path to destination xml files.
+  srcs         paths to source xml file to be merged.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -f FORCE, --force FORCE
-                        permit overwriting source file by dst.
+  -h, --help   show this help message and exit
+  -f, --force  permit overwriting source file by dst.
 ```
 
 Then you can import the generated XML into new and empty kdbx database. Existing entries should be removed before import as shown in the below figure.
